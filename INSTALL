@@ -1,0 +1,9 @@
+Building Arion
+
+See doc/readme-qt.rst for instructions on building Arion QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Arion.
+
+See doc/build-*.txt for instructions on building ariond,
+the intended-for-services, no-graphical-interface, reference
+implementation of Arion.
