@@ -114,7 +114,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>This option is the quickest and will cost about ~0.025 ARO to anonymize 1000 TX</string>
+    <string>This option is the quickest and will cost about ~0.025 ARION to anonymize 1000 TX</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
@@ -127,7 +127,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>This option is moderately fast and will cost about 0.05 ARO to anonymize 1000 TX</string>
+    <string>This option is moderately fast and will cost about 0.05 ARION to anonymize 1000 TX</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
@@ -153,7 +153,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>0.1 ARO per 1000 ARO you anonymize.</string>
+    <string>0.1 ARION per 1000 ARION you anonymize.</string>
    </property>
   </widget>
   <widget class="Line" name="line">

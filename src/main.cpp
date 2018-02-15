@@ -1453,7 +1453,7 @@ void static PruneOrphanBlocks()
 // miner's coin base reward
 int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
 {
-    int64_t nSubsidy = 10 * COIN; // Normal block reward 10 ARO coin
+    int64_t nSubsidy = 10 * COIN; // Normal block reward 10 ARION coin
     int lastDigit = (nHeight+1) % 10;
 
     if (nHeight == 1) {

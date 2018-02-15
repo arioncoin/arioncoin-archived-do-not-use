@@ -1,14 +1,14 @@
 ARION integration/staging tree
 =====================================
 
-What is the ARION [ARO] Blockchain?
+What is the ARION Blockchain?
 ---------------------------
 
-The ARION [ARO] Blockchain is an experimental smart contract platform protocol that enables
+The ARION Blockchain is an experimental smart contract platform protocol that enables
 instant payments to anyone, anywhere in the world in a private, secure manner.
-ARION [ARO] uses peer-to-peer blockchain technology developed by Bitcoin to operate
+ARION uses peer-to-peer blockchain technology developed by Bitcoin to operate
 with no central authority: managing transactions, execution of contracts, and
-issuing money are carried out collectively by the network. ARION [ARO] is the name of
+issuing money are carried out collectively by the network. ARION is the name of
 open source software which enables the use of this protocol.
 
 Specifications and General info
@@ -49,7 +49,7 @@ BUILD LINUX
 License
 -------
 
-ARION [ARO] is released under the terms of the MIT license. See [COPYING](COPYING) for more
+ARION is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process

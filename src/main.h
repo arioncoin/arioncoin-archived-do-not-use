@@ -98,7 +98,7 @@ static const int64_t VELOCITY_TOGGLE = 120; // Implementation of the Velocity sy
 /** Velocity retarget toggle block */
 static const int64_t VELOCITY_TDIFF = 0; // Use Velocity's retargetting method.
 /** Protocol toggle */
-inline bool IsProtocolV3(int64_t nTime) { return false; } // POSv3 disabled, ARO uses min and max age
+inline bool IsProtocolV3(int64_t nTime) { return false; } // POSv3 disabled, ARION uses min and max age
 /** Future drift value */
 static const int64_t nDrift = 2 * 60;
 /** Future drift params */
@@ -108,7 +108,7 @@ static const int64_t GetTargetSpacing = BLOCK_SPACING;
 /** "reject" message codes **/
 static const unsigned char REJECT_INVALID = 0x10;
 /** MasterNode required collateral */
-inline int64_t MasternodeCollateral(int nHeight) { return 5000; } // 5K ARO required as collateral
+inline int64_t MasternodeCollateral(int nHeight) { return 5000; } // 5K ARION required as collateral
 /** Coinbase transaction outputs can only be staked after this number of new blocks (network rule) */
 static const int nStakeMinConfirmations = 15;
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */

@@ -26,7 +26,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>Enter an Alias (friendly name) for your Master Node and its address (either clearnet IP and port or Tor onion address and port). The address should be in the format 123.456.789.123:45130 or akjdsafxjkhasdf.onion:45130. You must send exactly 5,000 ARO to the collateral address.</string>
+      <string>Enter an Alias (friendly name) for your Master Node and its address (either clearnet IP and port or Tor onion address and port). The address should be in the format 123.456.789.123:45130 or akjdsafxjkhasdf.onion:45130. You must send exactly 5,000 ARION to the collateral address.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

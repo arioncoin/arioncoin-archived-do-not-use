@@ -9,7 +9,7 @@
 #include "clientversion.h"
 
 //
-// Bootup the masternode, look for a 5,000 ARO input and register on the network
+// Bootup the masternode, look for a 5,000 ARION input and register on the network
 //
 void CActiveMasternode::ManageStatus()
 {

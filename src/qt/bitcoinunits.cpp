@@ -41,9 +41,9 @@ QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("ARO");
-    case mBTC: return QString("mARO");
-    case uBTC: return QString::fromUtf8("μARO");
+    case BTC: return QString("ARION");
+    case mBTC: return QString("mARION");
+    case uBTC: return QString::fromUtf8("μARION");
     default: return QString("???");
     }
 }
@@ -52,9 +52,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("ARO");
-    case mBTC: return QString("Milli-ARO (1 / 1,000)");
-    case uBTC: return QString("Micro-ARO (1 / 1,000,000)");
+    case BTC: return QString("ARION");
+    case mBTC: return QString("Milli-ARION (1 / 1,000)");
+    case uBTC: return QString("Micro-ARION (1 / 1,000,000)");
     default: return QString("???");
     }
 }
