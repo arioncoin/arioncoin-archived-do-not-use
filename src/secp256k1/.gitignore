@@ -12,7 +12,7 @@ gen_context
 *.so
 *.a
 !.gitignore
-
+!Makefile.am*
 Makefile
 configure
 .libs/
