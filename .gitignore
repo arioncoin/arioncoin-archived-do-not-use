@@ -31,3 +31,4 @@ arion-qt_plugin_import.cpp
 object_script.*
 
 !src/leveldb/Makefile
+!src/makefile.*
