@@ -637,8 +637,8 @@ void SendCoinsDialog::processSendCoinsReturn(const WalletModel::SendCoinsReturn 
     case WalletModel::NarrationTooLong:
         msgParams.first = tr("Error: Narration is too long.");
         break;
-    case WalletModel::ArionFee:
-        msgParams.first = tr("A fee %1 times higher than %2 per recipient is considered an Arionly high fee.").arg(10000).arg(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), MIN_RELAY_TX_FEE));
+    case WalletModel::InsaneFee:
+        msgParams.first = tr("A fee %1 times higher than %2 per recipient is considered an insanely high fee.").arg(10000).arg(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), MIN_RELAY_TX_FEE));
         break;
     case WalletModel::PrepareTransactionFailed:
         return;

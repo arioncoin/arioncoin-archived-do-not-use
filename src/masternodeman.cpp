@@ -710,7 +710,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
 
         CValidationState state;
         CTransaction tx = CTransaction();
-        CTxOut vout = CTxOut(DARKSEND_POOL_MAX, darkSendPool.collateralPubKey);
+        CTxOut vout = CTxOut((MasternodeCollateral(pindexBest->nHeight) - 1)*COIN, darkSendPool.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
         bool fAcceptable = false;
