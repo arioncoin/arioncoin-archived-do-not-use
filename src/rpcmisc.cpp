@@ -134,8 +134,8 @@ Value validateaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "validateaddress <Arion>\n"
-            "Return information about <Arion>.");
+            "validateaddress <ARIONaddress>\n"
+            "Return information about <ARIONaddress>.");
 
     CBitcoinAddress address(params[0].get_str());
     bool isValid = address.IsValid();
@@ -206,7 +206,7 @@ Value verifymessage(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 3)
         throw runtime_error(
-            "verifymessage <Arion> <signature> <message>\n"
+            "verifymessage <ARIONaddress> <signature> <message>\n"
             "Verify a signed message");
 
     string strAddress  = params[0].get_str();

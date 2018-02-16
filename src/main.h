@@ -112,7 +112,7 @@ inline int64_t MasternodeCollateral(int nHeight) { return 5000; } // 5K ARION re
 /** Coinbase transaction outputs can only be staked after this number of new blocks (network rule) */
 static const int nStakeMinConfirmations = 15;
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
-static const int nCoinbaseMaturity = 30; // 30 blocks
+static const int nCoinbaseMaturity = 10; // 10 blocks
 /** Minimum nCoinAge required to stake PoS */
 static const unsigned int nStakeMinAge = 8 * 60; // 8 hours
 /** Maximum nCoinAge required to stake PoS */
@@ -203,10 +203,10 @@ void ThreadStakeMiner(CWallet *pwallet);
 
 /** (try to) add transaction to memory pool **/
 bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
-                        bool* pfMissingInputs, bool fRejectArionFee=false, bool ignoreFees=false);
+                        bool* pfMissingInputs, bool fRejectInsaneFee=false, bool ignoreFees=false);
 
 bool AcceptableInputs(CTxMemPool& pool, const CTransaction &txo, bool fLimitFree,
-                        bool* pfMissingInputs, bool fRejectArionFee=false, bool isDSTX=false);
+                        bool* pfMissingInputs, bool fRejectInsaneFee=false, bool isDSTX=false);
 
 
 bool FindTransactionsByDestination(const CTxDestination &dest, std::vector<uint256> &vtxhash);
@@ -592,7 +592,7 @@ public:
     int GetDepthInMainChain(bool enableIX=true) const { CBlockIndex *pindexRet; return GetDepthInMainChain(pindexRet, enableIX); }
     bool IsInMainChain() const { CBlockIndex *pindexRet; return GetDepthInMainChainINTERNAL(pindexRet) > 0; }
     int GetBlocksToMaturity() const;
-    bool AcceptToMemoryPool(bool fLimitFree=true, bool fRejectArionFee=true, bool ignoreFees=false);
+    bool AcceptToMemoryPool(bool fLimitFree=true, bool fRejectInsaneFee=true, bool ignoreFees=false);
     int GetTransactionLockSignatures() const;
     bool IsTransactionLockTimedOut() const;
 };

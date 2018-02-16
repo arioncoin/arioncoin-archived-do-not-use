@@ -319,8 +319,8 @@ Value dumpprivkey(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "dumpprivkey <Arion>\n"
-            "Reveals the private key corresponding to <Arion>.");
+            "dumpprivkey <ARIONaddress>\n"
+            "Reveals the private key corresponding to <ARIONaddress>.");
 
     EnsureWalletIsUnlocked();
 

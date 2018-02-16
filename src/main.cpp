@@ -820,7 +820,7 @@ int64_t GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, 
 
 
 bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
-                        bool* pfMissingInputs, bool fRejectArionFee, bool ignoreFees)
+                        bool* pfMissingInputs, bool fRejectInsaneFee, bool ignoreFees)
 {
     AssertLockHeld(cs_main);
     if (pfMissingInputs)
@@ -955,8 +955,8 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
             }
         }
 
-        if (fRejectArionFee && nFees > MIN_RELAY_TX_FEE * 10000)
-            return error("AcceptableInputs: : Arion fees %s, %d > %d",
+        if (fRejectInsaneFee && nFees > MIN_RELAY_TX_FEE * 10000)
+            return error("AcceptableInputs: : insane fees %s, %d > %d",
                          hash.ToString(),
                          nFees, MIN_RELAY_TX_FEE * 10000);
 
@@ -996,7 +996,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
 }
 
 bool AcceptableInputs(CTxMemPool& pool, const CTransaction &txo, bool fLimitFree,
-                         bool* pfMissingInputs, bool fRejectArionFee, bool isDSTX)
+                         bool* pfMissingInputs, bool fRejectInsaneFee, bool isDSTX)
 {
     AssertLockHeld(cs_main);
     if (pfMissingInputs)
@@ -1117,8 +1117,8 @@ bool AcceptableInputs(CTxMemPool& pool, const CTransaction &txo, bool fLimitFree
             }
         }
 
-        if (fRejectArionFee && nFees > txMinFee * 10000)
-            return error("AcceptableInputs: : Arion fees %s, %d > %d",
+        if (fRejectInsaneFee && nFees > txMinFee * 10000)
+            return error("AcceptableInputs: : insane fees %s, %d > %d",
                          hash.ToString(),
                          nFees, MIN_RELAY_TX_FEE * 10000);
 
@@ -1219,9 +1219,9 @@ int CMerkleTx::GetBlocksToMaturity() const
 }
 
 
-bool CMerkleTx::AcceptToMemoryPool(bool fLimitFree, bool fRejectArionFee, bool ignoreFees)
+bool CMerkleTx::AcceptToMemoryPool(bool fLimitFree, bool fRejectInsaneFee, bool ignoreFees)
 {
-    return ::AcceptToMemoryPool(mempool, *this, fLimitFree, NULL, fRejectArionFee, ignoreFees);
+    return ::AcceptToMemoryPool(mempool, *this, fLimitFree, NULL, fRejectInsaneFee, ignoreFees);
 }
 
 

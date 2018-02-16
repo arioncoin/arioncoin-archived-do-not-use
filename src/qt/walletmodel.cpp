@@ -306,12 +306,12 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
                          CClientUIInterface::MSG_ERROR);
             return PrepareTransactionFailed;
         }
-        // reject Arion fee
-        unsigned int Arionfee = (transaction.getTransactionSize() == 0 ? nAddresses : transaction.getTransactionSize());
-        Arionfee = ((MIN_RELAY_TX_FEE * Arionfee) * 10000);
-        if (nFeeRequired > Arionfee){
-            LogPrintf("nFeeRequired: %d -- ArionFee: %d\n", nFeeRequired, Arionfee);
-            return ArionFee;
+        // reject insane fee
+        unsigned int insanefee = (transaction.getTransactionSize() == 0 ? nAddresses : transaction.getTransactionSize());
+        insanefee = ((MIN_RELAY_TX_FEE * insanefee) * 10000);
+        if (nFeeRequired > insanefee){
+            LogPrintf("nFeeRequired: %d -- InsaneFee: %d\n", nFeeRequired, insanefee);
+            return InsaneFee;
         }
     }
 
