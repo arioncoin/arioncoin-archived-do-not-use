@@ -1453,22 +1453,24 @@ void static PruneOrphanBlocks()
 // miner's coin base reward
 int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
 {
-    int64_t nSubsidy = 10 * COIN; // Normal block reward 10 ARION coin
-    int lastDigit = (nHeight+1) % 10;
+    int64_t nSubsidy = 3 * COIN; // Normal block reward 10 ARION coin
 
     if (nHeight == 1) {
         nSubsidy = 3000000 * COIN;
-    } else if (nHeight > 1 && nHeight <= 10000) {
-        nSubsidy = 2 * COIN; // Fair launch
+    } else if (nHeight > 1 && nHeight <= 2000) {
+        nSubsidy = 0.3 * COIN; // Fair launch
     } else if (
         (nHeight >= 99998 && nHeight <= 100000) ||
         (nHeight >= 499998 && nHeight <= 500000) ||
         (nHeight >= 999998 && nHeight <= 1000000) ||
         (nHeight >= 1999998 && nHeight <= 2000000)
     ) {
-        nSubsidy = 500 * COIN;
-    } else if (lastDigit == 5 || lastDigit == 6 || lastDigit == 7) {
-        nSubsidy = 25 * COIN; // Superblock
+        nSubsidy = 150 * COIN;
+    }
+
+    // decline coin production by ~30% per year.
+    for (int i = 262800; i <= nHeight; i += 262800) {
+        nSubsidy -= nSubsidy*0.3;
     }
 
     // hardCap v2.1
@@ -1483,18 +1485,34 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
 }
 
 // miner's coin stake reward
-int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, int64_t nFees)
+int64_t GetProofOfStakeReward(int nHeight, int64_t nCoinAge, int64_t nFees)
 {
-    int64_t nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
+    int64_t nSubsidy = 10 * COIN; // Normal block reward 10 ARION coin
+
+    if (nHeight >= 1 && nHeight <= 2000) {
+        nSubsidy = 1 * COIN; // Fair launch
+    } else if (
+        (nHeight >= 99998 && nHeight <= 100000) ||
+        (nHeight >= 499998 && nHeight <= 500000) ||
+        (nHeight >= 999998 && nHeight <= 1000000) ||
+        (nHeight >= 1999998 && nHeight <= 2000000)
+    ) {
+        nSubsidy = 500 * COIN;
+    }
+
+    // decline coin production by ~30% per year.
+    for (int i = 262800; i <= nHeight; i += 262800) {
+        nSubsidy -= nSubsidy*0.3;
+    }
 
     // hardCap v2.1
     if(pindexBest->nMoneySupply > MAX_SINGLE_TX)
     {
-        LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d\n", FormatMoney(nSubsidy), nCoinAge);
+        LogPrint("creation", "GetProofOfStakeReward(): create=%s nFees=%d\n", FormatMoney(nSubsidy), nFees);
         return nFees;
     }
 
-    LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d\n", FormatMoney(nSubsidy), nCoinAge);
+    LogPrint("creation", "GetProofOfStakeReward(): create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
     return nSubsidy + nFees;
 }
 
@@ -2203,7 +2221,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
         if (!vtx[1].GetCoinAge(txdb, pindex->pprev, nCoinAge))
             return error("ConnectBlock() : %s unable to get coin age for coinstake", vtx[1].GetHash().ToString());
 
-        int64_t nCalculatedStakeReward = GetProofOfStakeReward(pindex->pprev, nCoinAge, nFees);
+        int64_t nCalculatedStakeReward = GetProofOfStakeReward(pindex->nHeight, nCoinAge, nFees);
 
         if (nStakeReward > nCalculatedStakeReward)
             return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nCalculatedStakeReward));
@@ -4834,7 +4852,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
 // Define masternode payment value from POS
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
 {
-    int64_t ret = blockValue * 0.30; // 30%
+    int64_t ret = blockValue * 0.76; // 76% - 1% to Budget
 
     return ret;
 }

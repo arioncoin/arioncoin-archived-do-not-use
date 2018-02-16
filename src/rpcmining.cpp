@@ -46,7 +46,7 @@ Value getsubsidy(const Array& params, bool fHelp)
             "getsubsidy [nTarget]\n"
             "Returns proof-of-work subsidy value for the specified value of target.");
 
-    return (int64_t)GetProofOfStakeReward(pindexBest->pprev, 0, 0);
+    return (int64_t)GetProofOfStakeReward(pindexBest->nHeight, 0, 0);
 }
 
 Value getstakesubsidy(const Array& params, bool fHelp)
@@ -73,7 +73,7 @@ Value getstakesubsidy(const Array& params, bool fHelp)
     if (!tx.GetCoinAge(txdb, pindexBest, nCoinAge))
         throw JSONRPCError(RPC_MISC_ERROR, "GetCoinAge failed");
 
-    return (uint64_t)GetProofOfStakeReward(pindexBest->pprev, nCoinAge, 0);
+    return (uint64_t)GetProofOfStakeReward(pindexBest->nHeight, nCoinAge, 0);
 }
 
 Value getmininginfo(const Array& params, bool fHelp)
@@ -89,7 +89,7 @@ Value getmininginfo(const Array& params, bool fHelp)
 
     // Define block rewards
     int64_t nRewardPoW = (uint64_t)GetProofOfWorkReward(nBestHeight, 0);
-    int64_t nRewardPoS = (uint64_t)GetProofOfStakeReward(pindexBest->pprev, 0, 0);
+    int64_t nRewardPoS = (uint64_t)GetProofOfStakeReward(nBestHeight, 0, 0);
 
     Object obj, diff, weight;
     obj.push_back(Pair("blocks",        (int)nBestHeight));

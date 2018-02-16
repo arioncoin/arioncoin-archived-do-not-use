@@ -2626,7 +2626,7 @@ Value cclistcoins(const Array& params, bool fHelp)
                 if(dAge < nStakeMinAge)
                         nWeight = 0;
                 coutput.push_back(Pair("Weight", int(nWeight)));
-                double nReward = (double)GetProofOfStakeReward(pindexBest->pprev, 0, 0);
+                double nReward = (double)GetProofOfStakeReward(pindexBest->nHeight, 0, 0);
                 coutput.push_back(Pair("Potential Stake", nReward));
                 result.push_back(coutput);
         }

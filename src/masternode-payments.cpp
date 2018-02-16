@@ -260,10 +260,10 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
         newWinner.vin = pmn->vin;
 
         if(Params().BudgetPercentage() > 0 && (nHash % 100) <= Params().BudgetPercentage()) {
-                CBitcoinAddress budgetAddress(Params().BudgetAddress());
-                CScript scriptBudgetAddress;
-                scriptBudgetAddress.SetDestination(budgetAddress.Get());
-                newWinner.payee = scriptBudgetAddress;
+            CBitcoinAddress budgetAddress(Params().BudgetAddress());
+            CScript scriptBudgetAddress;
+            scriptBudgetAddress.SetDestination(budgetAddress.Get());
+            newWinner.payee = scriptBudgetAddress;
         } else {
             newWinner.payee = GetScriptForDestination(pmn->pubkey.GetID());
         }
