@@ -959,7 +959,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
             return error("AcceptableInputs: : insane fees %s, %d > %d",
                          hash.ToString(),
                          nFees, MIN_RELAY_TX_FEE * 10000);
-    }
+    
 
         // Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
