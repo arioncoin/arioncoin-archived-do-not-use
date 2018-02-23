@@ -959,13 +959,14 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
             return error("AcceptableInputs: : insane fees %s, %d > %d",
                          hash.ToString(),
                          nFees, MIN_RELAY_TX_FEE * 10000);
+    
 
         // Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
-        if (!tx.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, false, false, STANDARD_SCRIPT_VERIFY_FLAGS))
-        {
-            return error("AcceptToMemoryPool : ConnectInputs failed %s", hash.ToString());
-        }
+        //if (!tx.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, false, false, STANDARD_SCRIPT_VERIFY_FLAGS))
+        //{
+        //   return error("AcceptToMemoryPool : ConnectInputs failed %s", hash.ToString());
+        //}
 
         // Check again against just the consensus-critical mandatory script
         // verification flags, in case of bugs in the standard flags that cause
