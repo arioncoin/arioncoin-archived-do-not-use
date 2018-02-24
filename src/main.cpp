@@ -962,10 +962,10 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
 
         // Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
-        if (!tx.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, false, false, STANDARD_SCRIPT_VERIFY_FLAGS))
-        {
-            return error("AcceptToMemoryPool : ConnectInputs failed %s", hash.ToString());
-        }
+        //if (!tx.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, false, false, STANDARD_SCRIPT_VERIFY_FLAGS))
+        //{
+        //    return error("AcceptToMemoryPool : ConnectInputs failed %s", hash.ToString());
+        //}
 
         // Check again against just the consensus-critical mandatory script
         // verification flags, in case of bugs in the standard flags that cause
@@ -1215,7 +1215,7 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!(IsCoinBase() || IsCoinStake()))
         return 0;
-    return max(0, nCoinbaseMaturity - GetDepthInMainChain());
+    return max(0, (nCoinbaseMaturity+1) - GetDepthInMainChain());
 }
 
 
