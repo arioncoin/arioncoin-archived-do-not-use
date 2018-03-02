@@ -93,10 +93,11 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-        vSeeds.push_back(CDNSSeedData("seed1.arion.com",  "seed1.arion.com"));
-        vSeeds.push_back(CDNSSeedData("seed2.arion.com",  "seed2.arion.com"));
-
-        convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
+        vSeeds.push_back(CDNSSeedData("seed1.arioncoin.com",  "seed1.arioncoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed2.arioncoin.com",  "seed2.arioncoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed3.arioncoin.com",  "seed3.arioncoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed4.arioncoin.com",  "seed4.arioncoin.com"));
+        //convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
         nPoolMaxTransactions = 3;
         strDarksendPoolDummyAddress = "AQrdxgSckxugGue85kbKsikqvyotAXp211";
