@@ -17,6 +17,7 @@ addons:
     - libboost1.55-all-dev
     - autoconf
     - protobuf-compiler
+    - libevent-dev
     - libtool
     - libminiupnpc-dev
     - libqrencode-dev
