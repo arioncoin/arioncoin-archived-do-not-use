@@ -102,7 +102,7 @@ public:
         nPoolMaxTransactions = 3;
         strDarksendPoolDummyAddress = "AQrdxgSckxugGue85kbKsikqvyotAXp211";
 
-        strBudgetAddress = "ATVAXA6LU2ewsXrsW5aXhoF9NKFT4x2kun";
+        strBudgetAddress = "AKtG7GzpXag8fKgrq49s2sphii5SSnNEJL";
         fBudgetPercentage = 1;
 
         nEndPoWBlock = 0x7fffffff;
