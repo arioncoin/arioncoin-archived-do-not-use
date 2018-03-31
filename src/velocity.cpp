@@ -24,7 +24,7 @@ int VelocityI(int nHeight)
 bool Velocity_check(int nHeight)
 {
     LogPrintf("Checking for Velocity on block %u: ",nHeight);
-    if(VelocityI(nHeight) >= 0 && nHeight < VELOCITY_REMOVAL_BLOCK_HEIGHT)
+    if(VelocityI(nHeight) >= 0)
     {
         LogPrintf("Velocity is currently Enabled\n");
         return true;

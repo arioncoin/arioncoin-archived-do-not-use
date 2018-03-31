@@ -22,7 +22,7 @@ static const          int VELOCITY_MIN_VALUE[] = { MIN_TX_VALUE }; /** Minimum v
 static const          int VELOCITY_MIN_FEE[]   = { MIN_TX_FEE }; /** Minimum value of accumulated fees of the TX in a block to bypass Velocity-Rate (without COIN base) */
 static const         bool VELOCITY_FACTOR[]    = { false }; /** Treat Switches as factors of BlockReward */
 static const         bool VELOCITY_EXPLICIT[]  = { false }; /** Require all switches to trigger a block */
-static const          int VELOCITY_REMOVAL_BLOCK_HEIGHT = 30000;
+
 bool Velocity_check(int nHeight);
 bool Velocity(CBlockIndex* prevBlock, CBlock* block);
 
